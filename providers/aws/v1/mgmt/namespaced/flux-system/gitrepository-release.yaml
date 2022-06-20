@@ -6,7 +6,7 @@ metadata:
 spec:
   interval: 5m0s
   ref:
-    tag: v0.0.1
+    tag: v0.0.2
   secretRef:
     name: github-sshkey
   url: ssh://git@github.com/berndonline/k8s-gitops-at-scale
