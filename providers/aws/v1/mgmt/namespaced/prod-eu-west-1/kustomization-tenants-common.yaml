@@ -1,0 +1,16 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: tenants-common
+  namespace: prod-eu-west-1
+spec:
+  interval: 5m
+  path: ./tenants/aws/common
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: release
+    namespace: flux-system
+  kubeConfig:
+    secretRef:
+      name: prod-eu-west-1-kubeconfig
