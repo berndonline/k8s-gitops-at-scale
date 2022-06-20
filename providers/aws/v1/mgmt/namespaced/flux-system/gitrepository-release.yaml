@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: release
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  ref:
+    branch: main
+  secretRef:
+    name: github-sshkey
+  url: ssh://git@github.com/berndonline/k8s-gitops-at-scale
