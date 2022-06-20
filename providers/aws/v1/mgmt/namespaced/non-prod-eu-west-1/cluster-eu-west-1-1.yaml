@@ -1,0 +1,23 @@
+apiVersion: cluster.x-k8s.io/v1alpha3
+kind: Cluster
+metadata:
+  name: non-prod-eu-west-1
+  namespace: non-prod-eu-west-1
+  labels:
+    cluster.x-k8s.io/cluster-name: non-prod-eu-west-1
+spec:
+  clusterNetwork:
+    services:
+      cidrBlocks:
+      - 172.30.0.0/16
+    pods:
+      cidrBlocks:
+      - 10.128.0.0/14
+  controlPlaneRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1alpha3
+    kind: KubeadmControlPlane
+    name: non-prod-eu-west-1-control-plane
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+    kind: AWSCluster
+    name: non-prod-eu-west-1

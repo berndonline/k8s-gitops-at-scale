@@ -1,0 +1,13 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: AWSMachineTemplate
+metadata:
+  name: non-prod-eu-west-1-data-plane
+  namespace: non-prod-eu-west-1
+spec:
+  template:
+    spec:
+      iamInstanceProfile: nodes.cluster-api-provider-aws.sigs.k8s.io
+      instanceType: t3.small
+      sshKeyName: default
+      spotMarketOptions:
+        maxPrice: ""

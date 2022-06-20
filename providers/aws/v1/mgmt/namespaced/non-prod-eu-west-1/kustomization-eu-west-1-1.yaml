@@ -1,0 +1,16 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: non-prod-eu-west-1
+  namespace: non-prod-eu-west-1
+spec:
+  interval: 5m
+  path: ./providers/aws/v1/clusters/non-prod/non-prod-eu-west-1
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: main
+    namespace: flux-system
+  kubeConfig:
+    secretRef:
+      name: non-prod-eu-west-1-kubeconfig
