@@ -1,0 +1,32 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: namespace-reader
+rules:
+- apiGroups: [""]
+  resources: ["namespaces", "namespaces/status", "projects", "bindings", "events", "limitranges", "pods/log", "pods/status", "replicationcontrollers/status", "resourcequotas", "resourcequotas/status"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["limitranges", "secrets", "pods", "services", "configmaps", "endpoints", "persistentvolumeclaims", "replicationcontrollers", "replicationcontrollers/scale", "services/proxy", "pods/attach", "pods/exec", "pods/portforward", "pods/proxy"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["serviceaccounts"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps", "extensions"]
+  resources: ["deployments", "deployments/rollback", "deployments/scale", "controllerrevisions", "replicationcontrollers", "replicationcontrollers/scale", "replicasets", "replicasets/scale", "statefulsets", "statefulsets/scale", "ingresses"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps", "extensions"]
+  resources: ["deployments/rollback", "deployments/scale", "controllerrevisions", "replicationcontrollers/scale", "replicasets/scale", "statefulsets/scale"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["batch"]
+  resources: ["cronjobs", "jobs"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["networking"]
+  resources: ["ingresses", "ingresses/status"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["policy"]
+  resources: ["poddisruptionbudgets"]
+  verbs: ["get", "list", "watch"]
